@@ -143,7 +143,7 @@ public class RecetaMain extends YouTubeBaseActivity implements YouTubePlayer.OnI
         mValorationView.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating,
                                         boolean fromUser) {
-                Toast.makeText(RecetaMain.this, "Le asignaste " + String.valueOf(rating) + "estrellas a esta receta",
+                Toast.makeText(RecetaMain.this, "Le asignaste " + String.valueOf(rating) + " estrellas a esta receta",
                         Toast.LENGTH_SHORT).show();
 
 

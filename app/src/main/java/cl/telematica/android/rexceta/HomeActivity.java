@@ -19,6 +19,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 
 public class HomeActivity extends AppCompatActivity implements HorizontalListFragment.OnFragmentInteractionListener {
 
@@ -36,6 +39,8 @@ public class HomeActivity extends AppCompatActivity implements HorizontalListFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
 
         // TOOLBAR SEARCHVIEW ----------------------------------------------------------------------
         my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);

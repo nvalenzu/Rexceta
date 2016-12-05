@@ -32,6 +32,8 @@
     <string name="seek_to">Jump To</string>
     <string name="seek_to_hint">Seconds</string>
     <string name="facebook_app_id">520223418185934</string>
+    // if your App ID is 1234567, you should use fb1234567
+    <string name="fb_login_protocol_scheme">520223418185934</string>
 
 
 </resources>

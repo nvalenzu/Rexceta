@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "147196144550",
+    "project_id": "rexceta"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147196144550:android:511fd52aacb35901",
+        "android_client_info": {
+          "package_name": "cl.telematica.android.rexceta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147196144550-l8ktq3b9r1pc3c6qkk05v1e8tk0jrgfe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cl.telematica.android.rexceta",
+            "certificate_hash": "2CED4C9151C6674162EAE089607F58FAFD06B0B9"
+          }
+        },
+        {
+          "client_id": "147196144550-hcsva7f6mtdjeqga7i1j6m968um84q18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6SPUk3P4nKIWwAyoLcOf8Ct96HNPpmQQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

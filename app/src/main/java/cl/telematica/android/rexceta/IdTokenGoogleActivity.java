@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
@@ -32,6 +33,7 @@ public class IdTokenGoogleActivity extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiClient;
     private TextView mIdTokenTextView;
     private Button mRefreshButton;
+    GoogleSignInResult result;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class IdTokenGoogleActivity extends AppCompatActivity implements
             // Users cached credentials are valid, GoogleSignInResult containing ID token
             // is available immediately. This likely means the current ID token is already
             // fresh and can be sent to your server.
-            GoogleSignInResult result = opr.get();
+            result = opr.get();
             handleSignInResult(result);
         } else {
             // If the user has not previously signed in on this device or the sign-in has expired,
@@ -105,6 +107,10 @@ public class IdTokenGoogleActivity extends AppCompatActivity implements
         if (result.isSuccess()) {
             String idToken = result.getSignInAccount().getIdToken();
             mIdTokenTextView.setText(getString(R.string.id_token_fmt, idToken));
+            GoogleSignInAccount acct = result.getSignInAccount();
+            String username = acct.getDisplayName();
+            String usermail = acct.getEmail();
+            System.out.println("MI NOMBRE ES: " + username + "Y MI MAIL ES: " + usermail);
             updateUI(true);
         } else {
             updateUI(false);
@@ -166,6 +172,7 @@ public class IdTokenGoogleActivity extends AppCompatActivity implements
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
             mRefreshButton.setVisibility(View.VISIBLE);
+
         } else {
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
             mIdTokenTextView.setText(getString(R.string.id_token_fmt, "null"));

@@ -2,7 +2,6 @@ package cl.telematica.android.rexceta;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -11,20 +10,12 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     CallbackManager callbackManager = CallbackManager.Factory.create();
 
@@ -57,26 +48,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        Profile.getCurrentProfile();
-                        System.out.println("BLAAAAAAAAAAAAAAAAAAAH" + loginResult.getAccessToken().getToken());
-                        GraphRequest request = GraphRequest.newMeRequest(
-                                loginResult.getAccessToken(),
-                                new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(JSONObject object, GraphResponse response) {
-                                        Log.v("LoginActivity", response.toString());
-                                        System.out.println(object);
-
-                                        // Application code
-                                        try {
-                                            String firstName = Profile.getCurrentProfile().getFirstName();
-                                            String birthday = object.getString("birthday");
-                                            System.out.println("HOLAAAA " + firstName);
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                });
+                        System.out.println(
+                                "User ID: "
+                                        + loginResult.getAccessToken().getUserId()
+                                        + "\n" +
+                                        "Auth Token: "
+                                        + loginResult.getAccessToken().getToken()
+                        );
                     }
 
                     @Override
@@ -103,8 +81,4 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
 }

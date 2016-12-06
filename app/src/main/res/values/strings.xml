@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Rexceta</string>
-    <string name="menu_2">menu_2</string>
-    <string name="menu_1">Iniciar Sesión</string>
+    <string name="menu_2">Iniciar Sesión Google</string>
+    <string name="menu_1">Iniciar Sesión Facebook</string>
     <string name="my_tb_title">Rexceta</string>
     <string name="searchable">searchable</string>
     <string name="menu_search">Search</string>

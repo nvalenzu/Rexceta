@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -13,9 +12,8 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.common.SignInButton;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class FacebookLoginActivity extends AppCompatActivity {
 
     CallbackManager callbackManager = CallbackManager.Factory.create();
 
@@ -28,13 +26,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //FACEBOOK
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_login);
-
-
-        //GOOGLE
-        // Set the dimensions of the sign-in button.
-        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
 
 
         //FACEBOOK
@@ -72,13 +63,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Intent i = new Intent(LoginActivity.this, IdTokenGoogleActivity.class);
-        startActivity(i);
-
     }
 
 }

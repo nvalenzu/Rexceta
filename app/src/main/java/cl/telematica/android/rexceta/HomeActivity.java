@@ -160,11 +160,12 @@ public class HomeActivity extends AppCompatActivity implements HorizontalListFra
         switch (item.getItemId())
         {
             case R.id.menu_1:
-                Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+                Intent i = new Intent(HomeActivity.this, FacebookLoginActivity.class);
                 startActivity(i);
                 break;
             case R.id.menu_2:
-                Toast.makeText(cl.telematica.android.rexceta.HomeActivity.this, "opcion 2 del menu", Toast.LENGTH_SHORT).show();
+                Intent j = new Intent(HomeActivity.this, IdTokenGoogleActivity.class);
+                startActivity(j);
                 break;
         }
         return super.onOptionsItemSelected(item);

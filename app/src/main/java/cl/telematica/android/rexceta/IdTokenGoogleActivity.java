@@ -2,6 +2,7 @@ package cl.telematica.android.rexceta;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class IdTokenGoogleActivity extends AppCompatActivity implements
 
     private static final String TAG = "IdTokenGoogleActivity";
     private static final int RC_GET_TOKEN = 9002;
+    public static final long MILISEGUNDOS_ESPERA_LOGIN = 100;
 
     private GoogleApiClient mGoogleApiClient;
     private TextView mIdTokenTextView;
@@ -112,6 +114,13 @@ public class IdTokenGoogleActivity extends AppCompatActivity implements
             String usermail = acct.getEmail();
             System.out.println("MI NOMBRE ES: " + username + "Y MI MAIL ES: " + usermail);
             updateUI(true);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    Intent i = new Intent(IdTokenGoogleActivity.this, HomeActivity.class);
+                    startActivity(i);
+                }
+            }, MILISEGUNDOS_ESPERA_LOGIN);
         } else {
             updateUI(false);
         }

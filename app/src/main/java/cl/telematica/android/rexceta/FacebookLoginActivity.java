@@ -2,6 +2,7 @@ package cl.telematica.android.rexceta;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -12,6 +13,8 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import static cl.telematica.android.rexceta.IdTokenGoogleActivity.MILISEGUNDOS_ESPERA_LOGIN;
 
 public class FacebookLoginActivity extends AppCompatActivity {
 
@@ -46,6 +49,13 @@ public class FacebookLoginActivity extends AppCompatActivity {
                                         "Auth Token: "
                                         + loginResult.getAccessToken().getToken()
                         );
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                Intent i = new Intent(FacebookLoginActivity.this, HomeActivity.class);
+                                startActivity(i);
+                            }
+                        }, MILISEGUNDOS_ESPERA_LOGIN);
                     }
 
                     @Override

@@ -52,7 +52,7 @@ public class FacebookLoginActivity extends AppCompatActivity {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
-                                Intent i = new Intent(FacebookLoginActivity.this, HomeActivity.class);
+                                Intent i = new Intent(FacebookLoginActivity.this, HomeLogueado.class);
                                 startActivity(i);
                             }
                         }, MILISEGUNDOS_ESPERA_LOGIN);

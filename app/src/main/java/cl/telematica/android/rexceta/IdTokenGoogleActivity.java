@@ -117,7 +117,7 @@ public class IdTokenGoogleActivity extends AppCompatActivity implements
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
-                    Intent i = new Intent(IdTokenGoogleActivity.this, HomeActivity.class);
+                    Intent i = new Intent(IdTokenGoogleActivity.this, HomeLogueado.class);
                     startActivity(i);
                 }
             }, MILISEGUNDOS_ESPERA_LOGIN);
